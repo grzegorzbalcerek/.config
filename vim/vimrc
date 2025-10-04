@@ -1,0 +1,30 @@
+
+set nocompatible
+
+set encoding=utf-8
+set expandtab
+set hidden
+set noswapfile
+
+set guicursor=a:block
+set mouse=a
+set showmode
+set showcmd
+set ruler
+set wildmenu
+
+syntax on
+filetype plugin indent on
+
+set number
+set relativenumber
+
+set backspace=indent,eol,start
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+map gg :nohlsearch<CR>
+
+set path=.,~/.config/**,~/lib,~/doc/**,~/rep/rbsapp/**,,
+
