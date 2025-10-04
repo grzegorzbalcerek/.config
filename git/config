@@ -1,0 +1,23 @@
+[alias]
+	aa = add --all
+        b = branch
+        bd = branch -D
+	c = checkout
+	cb = checkout -b
+        d = diff
+        ds = diff --staged
+	m = commit
+	ma = commit --amend
+	mam = commit --amend -m
+	mane = commit --amend --no-edit
+	mm = commit -m
+        pdo = push --delete origin
+        r = rebase
+	s = status
+	l = log --pretty=tformat:'%Cred%h%Creset %Cgreen%ai%Creset %s'
+	lr = log --pretty=tformat:'%Cred%h%Creset %Cgreen%ar%Creset %s'
+        srv = daemon --verbose --export-all --reuseaddr --base-path=.
+[core]
+	editor = vim
+[init]
+	defaultBranch = master
