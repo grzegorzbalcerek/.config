@@ -15,7 +15,7 @@
         r = rebase
 	s = status
 	l = log --pretty=tformat:'%Cred%h%Creset %Cgreen%ai%Creset %s'
-	lr = log --pretty=tformat:'%Cred%h%Creset %Cgreen%ar%Creset %s'
+	o = log --pretty=tformat:'%Cred%h%Creset %Cgreen%ar%Creset %s'
         srv = daemon --verbose --export-all --reuseaddr --base-path=.
 [core]
 	editor = vim
