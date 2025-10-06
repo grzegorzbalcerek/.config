@@ -34,3 +34,4 @@ vim.opt.path = {
   "~/rep/rbsapp/**",
   ""
 }
+
