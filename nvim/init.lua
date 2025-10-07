@@ -31,7 +31,7 @@ vim.opt.path = {
   "~/.config/**",
   "~/lib",
   "~/doc/**",
-  "~/rep/rbsapp/**",
+  "~/rep/rbs/**",
   ""
 }
 

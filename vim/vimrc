@@ -26,5 +26,5 @@ set hlsearch
 set incsearch
 map gg :nohlsearch<CR>
 
-set path=.,~/.config/**,~/lib,~/doc/**,~/rep/rbsapp/**,,
+set path=.,~/.config/**,~/lib,~/doc/**,~/rep/rbs/**,,
 
