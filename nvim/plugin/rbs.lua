@@ -14,7 +14,7 @@ end
 vim.api.nvim_create_user_command("RbsLoadBook",
   function(opts)
     local file = opts.fargs[1]
-    load_book(file, from, to, word)
+    load_book(file)
   end,
   { nargs = 1 })
 
@@ -46,6 +46,16 @@ vim.api.nvim_create_user_command("RbsSelectRange",
   function(opts)
     local from = opts.fargs[1]
     local to = opts.fargs[2]
+    select_range(from, to)
+  end,
+  { nargs = "*" })
+
+vim.api.nvim_create_user_command("RbsBookAndRange",
+  function(opts)
+    local file = opts.fargs[1]
+    local from = opts.fargs[2]
+    local to = opts.fargs[3]
+    load_book(file)
     select_range(from, to)
   end,
   { nargs = "*" })
