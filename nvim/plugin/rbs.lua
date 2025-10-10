@@ -1,5 +1,5 @@
 
-function load_book(book_file)
+function book(book_file)
   local book = {}
   local n = 1
   function Word(w)
@@ -11,58 +11,108 @@ function load_book(book_file)
   vim.g.rbs_data = book
 end
 
-vim.api.nvim_create_user_command("RbsLoadBook",
+vim.api.nvim_create_user_command("RbsBook",
   function(opts)
     local file = opts.fargs[1]
-    load_book(file)
+    book(file)
   end,
   { nargs = 1 })
 
-function select_range(from, to)
+-- select range using the addr field
+function range_addr(from, to)
   local data = {}
   local n = 1
   local in_range = false
   for k,v in pairs(vim.g.rbs_book) do
     if not in_range then
-      if v.id == from then
+      if v.addr == from then
         in_range = true
       end
     end
     if in_range then
       data[n] = v
       n = n + 1
-      if v.id == to then
+      if v.addr == to then
         in_range = false
         break
       end
     end
   end
-  vim.g.rbs_range_from = from
-  vim.g.rbs_range_to = to
+  vim.g.rbs_range_addr_from = from
+  vim.g.rbs_range_addr_to = to
+  vim.g.rbs_range_verse_from = nil
+  vim.g.rbs_range_verse_to = nil
   vim.g.rbs_data = data
 end
 
-vim.api.nvim_create_user_command("RbsSelectRange",
+vim.api.nvim_create_user_command("RbsRangeAddr",
   function(opts)
     local from = opts.fargs[1]
     local to = opts.fargs[2]
-    select_range(from, to)
+    range_addr(from, to)
   end,
   { nargs = "*" })
 
-vim.api.nvim_create_user_command("RbsBookAndRange",
+vim.api.nvim_create_user_command("RbsBookRangeAddr",
   function(opts)
     local file = opts.fargs[1]
     local from = opts.fargs[2]
     local to = opts.fargs[3]
-    load_book(file)
-    select_range(from, to)
+    book(file)
+    range_addr(from, to)
+  end,
+  { nargs = "*" })
+ 
+-- select range using the verse field
+function range_verse(from, to)
+  local data = {}
+  local n = 1
+  local phase = 1 -- 1: before the first verse 2: in range 3: in the last verse
+  for k,v in pairs(vim.g.rbs_book) do
+    if phase == 1 then
+      if v.verse == from then
+        phase = 2
+      end
+    end
+    if phase == 2 or phase == 3 then
+      data[n] = v
+      n = n + 1
+    end
+    if phase == 2 and v.verse == to then
+      phase = 3
+    end
+    if phase == 3 and v.verse ~= to then
+      break
+    end
+  end
+  vim.g.rbs_range_addr_from = nil
+  vim.g.rbs_range_addr_to = nil
+  vim.g.rbs_range_verse_from = from
+  vim.g.rbs_range_verse_to = to
+  vim.g.rbs_data = data
+end
+
+vim.api.nvim_create_user_command("RbsRangeVerse",
+  function(opts)
+    local from = opts.fargs[1]
+    local to = opts.fargs[2]
+    range_verse(from, to)
+  end,
+  { nargs = "*" })
+
+vim.api.nvim_create_user_command("RbsBookRangeVerse",
+  function(opts)
+    local file = opts.fargs[1]
+    local from = opts.fargs[2]
+    local to = opts.fargs[3]
+    book(file)
+    range_verse(from, to)
   end,
   { nargs = "*" })
 
 function describe_repeated_sn(sn)
 
-  local addresses = {}
+  local verses = {}
   local list = ""
   local count = 0
   local word = 0
@@ -71,12 +121,12 @@ function describe_repeated_sn(sn)
     if v.sn == sn then
       count = count + 1
       word = v.enlexeme
-      if not addresses[v.addr] then
-        addresses[v.addr] = true
+      if not verses[v.verse] then
+        verses[v.verse] = true
         if not (list == "") then
           list = list .. ", "
         end
-        list = list .. v.addr
+        list = list .. v.verse
       end
     end
   end
