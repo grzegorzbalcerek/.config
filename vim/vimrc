@@ -2,7 +2,6 @@
 set nocompatible
 
 set encoding=utf-8
-set expandtab
 set hidden
 set noswapfile
 
@@ -24,7 +23,18 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
-map gg :nohlsearch<CR>
+map g/ :nohlsearch<CR>
 
-set path=.,~/.config/**,~/lib,~/doc/**,~/rep/rbs/**,,
+set expandtab
+set nosmarttab
+set shiftwidth=4
+set softtabstop=-1
+set textwidth=100
+
+set path=.
+set path+=~/.config/**
+set path+=~/lib
+set path+=~/doc/**
+set path+=~/rep/rbs/**
+set path+=,
 

@@ -1,10 +1,11 @@
 
 vim.opt.compatible = false
 
+vim.cmd.colorscheme("industry")
 vim.opt.encoding = "utf-8"
-vim.opt.expandtab = true
 vim.opt.hidden = false
 vim.opt.swapfile = false
+vim.opt.cursorline = true
 
 vim.opt.guicursor = "a:block"
 vim.opt.mouse = "a"
@@ -24,14 +25,18 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
-vim.keymap.set("", "gg", ":nohlsearch<CR>")
+vim.keymap.set("", "g/", ":nohlsearch<CR>")
 
-vim.opt.path = {
-  ".",
-  "~/.config/**",
-  "~/lib",
-  "~/doc/**",
-  "~/rep/rbs/**",
-  ""
-}
+vim.opt.expandtab = true
+vim.opt.smarttab = false
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = -1
+vim.opt.textwidth = 100
+
+vim.opt.path = { "." }
+vim.opt.path:append(vim.env.HOME .. "/.config/**")
+vim.opt.path:append(vim.env.HOME .. "/lib")
+vim.opt.path:append(vim.env.HOME .. "/doc/**")
+vim.opt.path:append(vim.env.HOME .. "/rep/rbs/**")
+vim.opt.path:append(",,")
 
