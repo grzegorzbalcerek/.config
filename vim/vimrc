@@ -32,6 +32,6 @@ filetype plugin indent on
 
 let mapleader=" "
 
-map g/ :nohlsearch<CR>
+map <leader>h :nohlsearch<CR>
 map <leader>s :write<CR>
 map <leader>w :set wrap!<CR>

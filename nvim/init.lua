@@ -32,7 +32,7 @@ vim.cmd("filetype plugin indent on")
 
 vim.g.mapleader = " "
 
-vim.keymap.set("", "g/", ":nohlsearch<CR>")
+vim.keymap.set("", "<leader>h", ":nohlsearch<CR>")
 vim.keymap.set("", "<leader>s", ":write<CR>")
 vim.keymap.set("", "<leader>w", ":set wrap!<CR>")
 
