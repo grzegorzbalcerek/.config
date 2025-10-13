@@ -1,40 +1,37 @@
 
 set nocompatible
 
+set backspace=indent,eol,start
+set cursorline
 set encoding=utf-8
-set hidden
-set noswapfile
-
+set expandtab
+set foldmethod=marker
 set guicursor=a:block
+set hidden
+set hlsearch
+set ignorecase
+set incsearch
 set mouse=a
-set showmode
-set showcmd
+set number
+set path=.,~/.config/**,~/lib,~/doc/**,~/rep/rbs/**,,
+set relativenumber
 set ruler
+set shiftwidth=4
+set showcmd
+set showmode
+set smartcase
+set nosmarttab
+set softtabstop=-1
+set noswapfile
+set textwidth=100
 set wildmenu
+
 
 syntax on
 filetype plugin indent on
 
-set number
-set relativenumber
+let mapleader=" "
 
-set backspace=indent,eol,start
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch
 map g/ :nohlsearch<CR>
-
-set expandtab
-set nosmarttab
-set shiftwidth=4
-set softtabstop=-1
-set textwidth=100
-
-set path=.
-set path+=~/.config/**
-set path+=~/lib
-set path+=~/doc/**
-set path+=~/rep/rbs/**
-set path+=,
-
+map <leader>s :write<CR>
+map <leader>w :set wrap!<CR>

@@ -1,42 +1,40 @@
 
 vim.opt.compatible = false
 
-vim.cmd.colorscheme("industry")
-vim.opt.encoding = "utf-8"
-vim.opt.hidden = false
-vim.opt.swapfile = false
+vim.opt.backspace = { "indent", "eol", "start" }
 vim.opt.cursorline = true
-
+vim.opt.encoding = "utf-8"
+vim.opt.expandtab = true
+vim.opt.foldmethod="marker"
 vim.opt.guicursor = "a:block"
+vim.opt.hidden = false
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.incsearch = true
 vim.opt.mouse = "a"
-vim.opt.showmode = true
-vim.opt.showcmd = true
+vim.opt.number = true
+vim.opt.path = { ".", vim.env.HOME .. "/.config/**", vim.env.HOME .. "/lib", vim.env.HOME .. "/doc/**", vim.env.HOME .. "/rep/rbs/**", "" }
+vim.opt.relativenumber = true
 vim.opt.ruler = true
+vim.opt.shiftwidth = 4
+vim.opt.showcmd = true
+vim.opt.showmode = true
+vim.opt.smartcase = true
+vim.opt.smarttab = false
+vim.opt.softtabstop = -1
+vim.opt.swapfile = false
+vim.opt.textwidth = 100
 vim.opt.wildmenu = true
 
+vim.cmd.colorscheme("industry")
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
 
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.g.mapleader = " "
 
-vim.opt.backspace = { "indent", "eol", "start" }
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
 vim.keymap.set("", "g/", ":nohlsearch<CR>")
+vim.keymap.set("", "<leader>s", ":write<CR>")
+vim.keymap.set("", "<leader>w", ":set wrap!<CR>")
 
-vim.opt.expandtab = true
-vim.opt.smarttab = false
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = -1
-vim.opt.textwidth = 100
-
-vim.opt.path = { "." }
-vim.opt.path:append(vim.env.HOME .. "/.config/**")
-vim.opt.path:append(vim.env.HOME .. "/lib")
-vim.opt.path:append(vim.env.HOME .. "/doc/**")
-vim.opt.path:append(vim.env.HOME .. "/rep/rbs/**")
-vim.opt.path:append(",,")
+vim.g.RbsBookFile = vim.env.HOME .. "/doc/rbs/book43.lua"
 
