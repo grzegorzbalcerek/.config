@@ -33,8 +33,8 @@ filetype plugin indent on
 let mapleader=" "
 
 map <leader>h :set hlsearch!<CR>
-map <leader>s :write<CR>
-map <leader>w :set wrap!<CR>
+map <leader>w :write<CR>
+map <leader>r :set wrap!<CR>
 
 map <C-M-Left> :bprev<CR>
 map <C-M-Right> :bnext<CR>

@@ -1,5 +1,5 @@
 # copy Microsoft.PowerShell_profile.ps1 $PROFILE
-# copy $HOME\.config\misc\Microsoft.PowerShell_profile.ps1 $PROFILE
+# copy $HOME\.config\ps\Microsoft.PowerShell_profile.ps1 $PROFILE
 
 function cdd {Set-Location -Path $HOME\doc}
 function cdD {Set-Location -Path $HOME\Downloads}

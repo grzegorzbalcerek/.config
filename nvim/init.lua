@@ -33,8 +33,8 @@ vim.cmd("filetype plugin indent on")
 vim.g.mapleader = " "
 
 vim.keymap.set("", "<leader>h", ":set hlsearch!<CR>")
-vim.keymap.set("", "<leader>s", ":write<CR>")
-vim.keymap.set("", "<leader>w", ":set wrap!<CR>")
+vim.keymap.set("", "<leader>w", ":write<CR>")
+vim.keymap.set("", "<leader>r", ":set wrap!<CR>")
 
 vim.keymap.set("", "<C-M-Left>", ":bprev<CR>")
 vim.keymap.set("", "<C-M-Right>", ":bnext<CR>")
