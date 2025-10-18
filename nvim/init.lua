@@ -49,5 +49,5 @@ vim.keymap.set("", "<M-Down>", ":resize -1<CR>")
 vim.keymap.set("", "<M-Up>", ":resize +1<CR>")
 vim.keymap.set("", "<M-Right>", ":vertical :resize +1<CR>")
 
-vim.g.RbsBookFile = vim.env.HOME .. "/doc/rbs/book43.lua"
+vim.g.RbsFile = vim.env.HOME .. "/doc/rbs/book43.lua"
 
