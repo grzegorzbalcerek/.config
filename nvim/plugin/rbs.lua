@@ -69,12 +69,14 @@ function describe_repeated_sn(sn)
     local verses = {}
     local list = ""
     local count = 0
-    local word = 0
+    local enlexeme = ""
+    local grlexeme = ""
 
     for k,v in pairs(vim.g.RbsData) do
         if v.sn == sn then
           count = count + 1
-          word = v.enlexeme
+          enlexeme = v.enlexeme
+          grlexeme = v.enlexeme
           if not verses[v.verse] then
               verses[v.verse] = true
               if not (list == "") then
@@ -85,15 +87,21 @@ function describe_repeated_sn(sn)
         end
     end
 
-    local description = "The word “" .. word .. "” is repeated " .. count .. " times (" .. list .. ")."
-
-    vim.api.nvim_paste(description, true, -1)
+    return "The word “" .. enlexeme .. "” (" .. grlexeme .. ") is repeated " .. count .. " times (" .. list .. ")."
 end
 
 
-vim.api.nvim_create_user_command("RbsDescribeRepeatedSn",
+vim.api.nvim_create_user_command("RbsInsertRepeatedSn",
     function(opts)
-        describe_repeated_sn(opts.fargs[1])
+        local description = describe_repeated_sn(opts.fargs[1])
+        vim.api.nvim_paste(description, true, -1)
+    end,
+    { nargs = 1 })
+
+vim.api.nvim_create_user_command("RbsPrintRepeatedSn",
+    function(opts)
+        local description = describe_repeated_sn(opts.fargs[1])
+        print(description)
     end,
     { nargs = 1 })
 
