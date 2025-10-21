@@ -16,6 +16,7 @@ set number
 set path=.,~/.config/**,~/lib,~/doc/**,~/rep/rbs/**,,
 set relativenumber
 set ruler
+
 set shiftwidth=4
 set showcmd
 set showmode

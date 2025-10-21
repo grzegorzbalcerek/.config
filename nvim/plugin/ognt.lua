@@ -41,7 +41,7 @@ vim.api.nvim_create_user_command("RbsSn",
     end,
     { nargs = 1 })
 
-vim.api.nvim_create_user_command("RbsFind",
+vim.api.nvim_create_user_command("RbsCFind",
     function(opts)
         local str = opts.fargs[1]
         for k,v in pairs(vim.g.RbsConcordance) do
@@ -161,7 +161,7 @@ vim.api.nvim_create_user_command("RbsPrintRepeatedSn",
     end,
     { nargs = 1 })
 
-if vim.g.RbsFile then
-    load_file(vim.g.RbsFile)
+if vim.g.rbs_file then
+    load_file(vim.g.rbs_file)
 end
 

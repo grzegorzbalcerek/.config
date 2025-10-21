@@ -16,6 +16,7 @@ vim.opt.number = true
 vim.opt.path = { ".", vim.env.HOME .. "/.config/**", vim.env.HOME .. "/lib", vim.env.HOME .. "/doc/**", vim.env.HOME .. "/rep/rbs/**", "" }
 vim.opt.relativenumber = true
 vim.opt.ruler = true
+vim.opt.runtimepath:append( vim.env.HOME .. "/doc/rbs/ognt" )
 vim.opt.shiftwidth = 4
 vim.opt.showcmd = true
 vim.opt.showmode = true
@@ -49,5 +50,5 @@ vim.keymap.set("", "<M-Down>", ":resize -1<CR>")
 vim.keymap.set("", "<M-Up>", ":resize +1<CR>")
 vim.keymap.set("", "<M-Right>", ":vertical :resize +1<CR>")
 
-vim.g.RbsFile = vim.env.HOME .. "/doc/rbs/book43.lua"
+vim.g.OgntBook = 43
 
