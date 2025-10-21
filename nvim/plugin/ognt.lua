@@ -5,7 +5,12 @@ function load_book(book)
     elseif not vim.g.OgntBook then
         error("Book number not given. Set vim.g.OgntBook or provide the book number as argument")
     end
-    local file = "book" .. tostring(vim.g.OgntBook) .. ".lua"
+    local file
+    if vim.g.OgntPath then
+        file = vim.g.OgntPath .. "/book" .. tostring(vim.g.OgntBook) .. ".lua"
+    else
+        file = "book" .. tostring(vim.g.OgntBook) .. ".lua"
+    end
     local words = {}
     local concordance = {}
     local word_count = 0
