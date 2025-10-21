@@ -1,5 +1,5 @@
 # cp .profile $HOME/.profile
-# cp $HOME/.config/misc/.profile $HOME/.profile
+# cp $HOME/.config/bash/.profile $HOME/.profile
 
 export EDITOR=vim
 export OPENGNT_BASE_TEXT="$HOME/gh/OpenGNT/OpenGNT_version3_3.csv"
@@ -12,6 +12,7 @@ alias cdD="cd $HOME/Downloads"
 alias cdde="cd $HOME/doc/emacs"
 alias cddr="cd $HOME/doc/rbs"
 alias cddrc="cd $HOME/doc/rbs/cov26"
+alias cddro="cd $HOME/doc/rbs/ognt"
 alias cdg="cd $HOME/gh"
 alias cdh="cd $HOME"
 alias cdl="cd $HOME/lib"
