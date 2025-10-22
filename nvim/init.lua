@@ -2,6 +2,7 @@
 vim.opt.compatible = false
 
 vim.opt.backspace = { "indent", "eol", "start" }
+vim.opt.clipboard = "unnamed"
 vim.opt.cursorline = true
 vim.opt.encoding = "utf-8"
 vim.opt.expandtab = true
