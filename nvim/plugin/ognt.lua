@@ -32,7 +32,7 @@ end
 
 vim.api.nvim_create_user_command("OgntLoadBook", function(opts) print(load_book(opts.fargs[1])) end, { nargs = "?" })
 
-function _sn_info(entry)
+function concordance_info(entry)
     return entry.sn .. " " ..
            entry.grlexeme .. " " ..
            entry.t1lexeme .. " " ..
@@ -45,7 +45,7 @@ end
 function concordance_sn(sn)
     local entry = vim.g.OgntBookConcordance[sn]
     if entry then
-        print(_sn_info(entry))
+        print(concordance_info(entry))
     else
         error("Strong number " .. sn .. " entry not found")
     end
@@ -56,7 +56,7 @@ vim.api.nvim_create_user_command("ConcordanceSn", function(opts) concordance_sn(
 function concordance_find(str)
     for k,v in pairs(vim.g.OgntBookConcordance) do
         if string.match(v.sn, str) or string.match(v.enlexeme, str) or string.match(v.t2lexeme, str) then
-            print(_sn_info(v))
+            print(concordance_info(v))
         end
     end
 end
@@ -106,6 +106,30 @@ function range(from, to)
 end
 
 vim.api.nvim_create_user_command("Range", function(opts) range(opts.fargs[1], opts.fargs[2]) end, { nargs = "*" })
+
+function word_info(entry)
+
+    return entry.addr .. " " ..
+           entry.gr .. " " ..
+           entry.t1 .. " " ..
+           entry.t2 .. " " ..
+           entry.en .. " " ..
+           entry.sn .. " " ..
+           entry.grlexeme .. " " ..
+           entry.t1lexeme .. " " ..
+           entry.t2lexeme .. " " ..
+           entry.enlexeme
+end
+
+function range_find(str)
+    for k,v in pairs(vim.g.OgntRangeWords) do
+        if string.match(v.sn, str) or string.match(v.enlexeme, str) or string.match(v.t2lexeme, str) then
+            print(word_info(v))
+        end
+    end
+end
+
+vim.api.nvim_create_user_command("RangeFind", function(opts) range_find(opts.fargs[1]) end, { nargs = 1 })
 
 function range_count_sn(sn)
 
