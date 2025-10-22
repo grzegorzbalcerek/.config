@@ -55,7 +55,7 @@ vim.api.nvim_create_user_command("ConcordanceSn", function(opts) concordance_sn(
 
 function concordance_find(str)
     for k,v in pairs(vim.g.OgntBookConcordance) do
-        if string.match(v.sn, str) or string.match(v.enlexeme, str) or string.match(v.t2lexeme, str) then
+        if v.sn == str or string.match(v.enlexeme, str) or string.match(v.t2lexeme, str) then
             print(concordance_info(v))
         end
     end
@@ -123,7 +123,7 @@ end
 
 function range_find(str)
     for k,v in pairs(vim.g.OgntRangeWords) do
-        if string.match(v.sn, str) or string.match(v.enlexeme, str) or string.match(v.t2lexeme, str) then
+        if v.sn == str or string.match(v.enlexeme, str) or string.match(v.t2lexeme, str) then
             print(word_info(v))
         end
     end
