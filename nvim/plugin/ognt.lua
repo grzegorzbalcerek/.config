@@ -32,14 +32,10 @@ end
 
 vim.api.nvim_create_user_command("OgntLoadBook", function(opts) print(load_book(opts.fargs[1])) end, { nargs = "?" })
 
-function _output(text, bang)
+function _output(text)
     if text then
-        vim.fn.setreg("", text)
-        if bang then
-            vim.api.nvim_paste(text, true, -1)
-        else
-            print(text)
-        end
+        vim.fn.setreg("*", text)
+        print(text)
     end
 end
 
@@ -68,11 +64,16 @@ function copy_text(addr, count, bang)
         end
     end
     if verse then
-        _output("“" .. en .. "” (" .. t1 .. ", " .. verse .. ")", bang)
+        local result = "“" .. en .. "” ("
+        if bang then
+            result = result .. t1 .. ", " 
+        end
+        result = result .. verse .. ")"
+        _output(result)
     end
 end
 
-vim.api.nvim_create_user_command("CopyText", function(opts) copy_text(opts.fargs[1], opts.fargs[2], opts.bang) end, { nargs = "*", bang = true })
+vim.api.nvim_create_user_command("OgntCopyText", function(opts) copy_text(opts.fargs[1], opts.fargs[2], opts.bang) end, { nargs = "*", bang = true })
 
 function concordance_info(entry)
     return entry.sn .. " " ..
@@ -88,7 +89,7 @@ function _concordance_matches_str(entry, str)
     return entry.sn == str or string.match(entry.enlexeme, str) or string.match(entry.t2lexeme, str)
 end
 
-function concordance(str, bang)
+function concordance(str)
     local result
     for _,entry in pairs(vim.g.OgntBookConcordance) do
         if _concordance_matches_str(entry, str) then
@@ -99,10 +100,10 @@ function concordance(str, bang)
             end
         end
     end
-    _output(result, bang)
+    _output(result)
 end
 
-vim.api.nvim_create_user_command("Concordance", function(opts) concordance(opts.fargs[1], opts.bang) end, { nargs = 1, bang = true  })
+vim.api.nvim_create_user_command("OgntConcordance", function(opts) concordance(opts.fargs[1]) end, { nargs = 1 })
 
 function range_words(from, to)
     local data = {}
@@ -146,7 +147,7 @@ function range(from, to)
     end
 end
 
-vim.api.nvim_create_user_command("Range", function(opts) range(opts.fargs[1], opts.fargs[2]) end, { nargs = "*" })
+vim.api.nvim_create_user_command("OgntRange", function(opts) range(opts.fargs[1], opts.fargs[2]) end, { nargs = "*" })
 
 function word_info(entry)
 
@@ -170,23 +171,24 @@ function _entry_matches_str(entry, str)
         string.match(entry.t2lexeme, str)
 end
 
-function range_find(str)
-    for _,entry in pairs(vim.g.OgntRangeWords) do
+function find(words, str)
+    for _,entry in pairs(words) do
         if _entry_matches_str(entry, str) then
             print(word_info(entry))
         end
     end
 end
 
-vim.api.nvim_create_user_command("RangeFind", function(opts) range_find(opts.fargs[1]) end, { nargs = 1 })
+vim.api.nvim_create_user_command("OgntBookFind", function(opts) find(vim.g.OgntBookWords, opts.fargs[1]) end, { nargs = 1 })
+vim.api.nvim_create_user_command("OgntRangeFind", function(opts) find(vim.g.OgntRangeWords, opts.fargs[1]) end, { nargs = 1 })
 
-function range_sn_data(sn)
+function sn_data(words, sn)
 
     local verses = {}
     local list = ""
     local count = 0
 
-    for k,v in pairs(vim.g.OgntRangeWords) do
+    for k,v in pairs(words) do
         if v.sn == sn then
           count = count + 1
           if not verses[v.verse] then
@@ -203,28 +205,43 @@ function range_sn_data(sn)
     return entry, list, count
 end
 
-function range_sn(sn, bang)
-    local entry, list, count = range_sn_data(sn)
-    _output("“" .. entry.enlexeme .. "” (" .. entry.t1lexeme .. ", " .. list .. ")", bang)
+function sn(words, sn, bang)
+    local entry, list, count = sn_data(words, sn)
+    if entry then
+        local result = "“" .. entry.enlexeme .. "” ("
+        if bang then
+            result = result .. entry.t1lexeme .. ", "
+        end
+        result = result .. list .. ")"
+        _output(result)
+    else
+        error("Entry " .. sn .. " not found")
+    end
 end
 
-function range_sn_count(sn, bang)
-    local entry, list, count = range_sn_data(sn)
-    _output("“" .. entry.enlexeme .. "” (" .. entry.t1lexeme .. ", " .. list .. ") is repeated " .. count .. " times.", bang)
+function sn_count(words, sn, bang)
+    local entry, list, count = sn_data(words, sn)
+        local result = "“" .. entry.enlexeme .. "” ("
+        if bang then
+            result = result .. entry.t1lexeme .. ", "
+        end
+        result = result .. list .. ") is repeated " .. count .. " times."
+    _output(result)
 end
 
-function range_sn_list(sn, bang)
-    local entry, list, count = range_sn_data(sn)
-    _output("(" .. list .. ")", bang)
+function sn_list(words, sn)
+    local entry, list, count = sn_data(words, sn)
+    _output("(" .. list .. ")")
 end
 
-vim.api.nvim_create_user_command("RangeSn", function(opts) range_sn(opts.fargs[1], opts.bang) end, { nargs = 1, bang = true })
+vim.api.nvim_create_user_command("OgntBookSn", function(opts) sn(vim.g.OgntBookWords, opts.fargs[1], opts.bang) end, { nargs = 1, bang = true })
+vim.api.nvim_create_user_command("OgntBookSnCount", function(opts) sn_count(vim.g.OgntBookWords, opts.fargs[1], opts.bang) end, { nargs = 1, bang = true })
+vim.api.nvim_create_user_command("OgntBookSnList", function(opts) sn_list(vim.g.OgntBookWords, opts.fargs[1]) end, { nargs = 1 })
+vim.api.nvim_create_user_command("OgntRangeSn", function(opts) sn(vim.g.OgntRangeWords, opts.fargs[1], opts.bang) end, { nargs = 1, bang = true })
+vim.api.nvim_create_user_command("OgntRangeSnCount", function(opts) sn_count(vim.g.OgntRangeWords, opts.fargs[1], opts.bang) end, { nargs = 1, bang = true })
+vim.api.nvim_create_user_command("OgntRangeSnList", function(opts) sn_list(vim.g.OgntRangeWords, opts.fargs[1]) end, { nargs = 1 })
 
-vim.api.nvim_create_user_command("RangeSnCount", function(opts) range_sn_count(opts.fargs[1], opts.bang) end, { nargs = 1, bang = true })
-
-vim.api.nvim_create_user_command("RangeSnList", function(opts) range_sn_list(opts.fargs[1], opts.bang) end, { nargs = 1, bang = true })
-
-function range_close_words(entries_length, ...)
+function close_words(words, entries_length, ...)
 
     function _entry_matches_strs(entry, strs)
         for str,_ in pairs(strs) do
@@ -245,8 +262,9 @@ function range_close_words(entries_length, ...)
     local entries = {}
     local n = 0
     local j = 0
+    local result
 
-    for _,entry in pairs(vim.g.OgntRangeWords) do
+    for _,entry in pairs(words) do
         -- build the current entries
         n = n + 1
         if n <= entries_length then
@@ -272,16 +290,27 @@ function range_close_words(entries_length, ...)
                     for j=1,entries_length do
                         t2_text = t2_text .. " " .. entries[j].t2
                     end
-                    print(addr, t2_text)
+                    local output = addr .. " " .. t2_text
+                    if result then
+                        result = result .. "\n" .. output
+                    else
+                        result = output
+                    end
                 end
             end
         end
     end
+    _output(result)
 end
 
-vim.api.nvim_create_user_command("RangeCloseWords",
+vim.api.nvim_create_user_command("OgntRangeCloseWords",
     function(opts)
-        range_close_words(tonumber(opts.fargs[1]), opts.fargs[2], opts.fargs[3], opts.fargs[4], opts.fargs[5], opts.fargs[6], opts.fargs[7], opts.fargs[8])
+        close_words(vim.g.OgntRangeWords, tonumber(opts.fargs[1]), opts.fargs[2], opts.fargs[3], opts.fargs[4], opts.fargs[5], opts.fargs[6], opts.fargs[7], opts.fargs[8])
+    end, { nargs = "*" })
+
+vim.api.nvim_create_user_command("OgntBookCloseWords",
+    function(opts)
+        close_words(vim.g.OgntBookWords, tonumber(opts.fargs[1]), opts.fargs[2], opts.fargs[3], opts.fargs[4], opts.fargs[5], opts.fargs[6], opts.fargs[7], opts.fargs[8])
     end, { nargs = "*" })
 
 if vim.g.OgntBook then

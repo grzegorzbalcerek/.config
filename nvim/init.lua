@@ -1,6 +1,8 @@
 
 vim.opt.compatible = false
 
+vim.opt.autoread = true
+vim.opt.autowrite = true
 vim.opt.backspace = { "indent", "eol", "start" }
 vim.opt.clipboard = "unnamed"
 vim.opt.cursorline = true
@@ -37,18 +39,18 @@ vim.keymap.set("", "<leader>h", ":set hlsearch!<CR>")
 vim.keymap.set("", "<leader>w", ":write<CR>")
 vim.keymap.set("", "<leader>r", ":set wrap!<CR>")
 
-vim.keymap.set("", "<C-M-Left>", ":bprev<CR>")
-vim.keymap.set("", "<C-M-Right>", ":bnext<CR>")
+vim.keymap.set("", "<M-Left>", ":bprev<CR>")
+vim.keymap.set("", "<M-Right>", ":bnext<CR>")
 
-vim.keymap.set("", "<C-Left>", "<C-W>h")
-vim.keymap.set("", "<C-Down>", "<C-W>j")
-vim.keymap.set("", "<C-Up>", "<C-W>k")
-vim.keymap.set("", "<C-Right>", "<C-W>l")
+vim.keymap.set("", "<C-M-Left>", "<C-W>h")
+vim.keymap.set("", "<C-M-Down>", "<C-W>j")
+vim.keymap.set("", "<C-M-Up>", "<C-W>k")
+vim.keymap.set("", "<C-M-Right>", "<C-W>l")
 
-vim.keymap.set("", "<M-Left>", ":vertical :resize -1<CR>")
-vim.keymap.set("", "<M-Down>", ":resize -1<CR>")
-vim.keymap.set("", "<M-Up>", ":resize +1<CR>")
-vim.keymap.set("", "<M-Right>", ":vertical :resize +1<CR>")
+vim.keymap.set("", "<C-S-M-Left>", ":vertical :resize -1<CR>")
+vim.keymap.set("", "<C-S-M-Down>", ":resize -1<CR>")
+vim.keymap.set("", "<C-S-M-Up>", ":resize +1<CR>")
+vim.keymap.set("", "<C-S-M-Right>", ":vertical :resize +1<CR>")
 
 vim.g.OgntPath = vim.env.HOME .. "/doc/rbs/ognt"
 vim.g.OgntBook = 43
