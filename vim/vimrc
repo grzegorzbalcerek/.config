@@ -1,6 +1,8 @@
 
 set nocompatible
 
+set autoread
+set autowrite
 set backspace=indent,eol,start
 set clipboard=unnamed
 set cursorline
@@ -38,16 +40,16 @@ map <leader>h :set hlsearch!<CR>
 map <leader>w :write<CR>
 map <leader>r :set wrap!<CR>
 
-map <C-M-Left> :bprev<CR>
-map <C-M-Right> :bnext<CR>
+map <M-Left> :bprev<CR>
+map <M-Right> :bnext<CR>
 
-map <C-Left> <C-W>h
-map <C-Down> <C-W>j
-map <C-Up> <C-W>k
-map <C-Right> <C-W>l
+map <C-M-Left> <C-W>h
+map <C-M-Down> <C-W>j
+map <C-M-Up> <C-W>k
+map <C-M-Right> <C-W>l
 
-map <M-Left> :vertical :resize -1<CR>
-map <M-Down> :resize -1<CR>
-map <M-Up> :resize +1<CR>
-map <M-Right> :vertical :resize +1<CR>
+map <C-S-M-Left> :vertical :resize -1<CR>
+map <C-S-M-Down> :resize -1<CR>
+map <C-S-M-Up> :resize +1<CR>
+map <C-S-M-Right> :vertical :resize +1<CR>
 
