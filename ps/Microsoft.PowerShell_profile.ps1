@@ -16,6 +16,7 @@ function cdr {Set-Location -Path $HOME\rep}
 function cdrr {Set-Location -Path $HOME\rep\rbs}
 function cdrra {Set-Location -Path $HOME\rep\rbs\app}
 function cdrro {Set-Location -Path $HOME\rep\rbs\ognt}
+function cdz {Set-Location -Path $HOME\zk}
 
 Set-Alias -name g -value git
 

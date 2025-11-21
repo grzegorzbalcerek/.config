@@ -16,7 +16,7 @@ set ignorecase
 set incsearch
 set mouse=a
 set number
-set path=.,~/.config/**,~/lib,~/doc/**,~/rep/rbs/**,,
+set path=.,~/.config/**,~/lib,~/doc/**,~/zk/**,~/rep/rbs/**,,
 set relativenumber
 set ruler
 
