@@ -40,12 +40,19 @@ vim.keymap.set("", "<leader>w", ":write<CR>")
 vim.keymap.set("", "<leader>r", ":set wrap!<CR>")
 
 vim.keymap.set("", "<M-Left>", ":bprev<CR>")
+vim.keymap.set("", "<M-Down>", ":ls<CR>")
+vim.keymap.set("", "<M-Up>", ":Explore<CR>")
 vim.keymap.set("", "<M-Right>", ":bnext<CR>")
 
-vim.keymap.set("", "<C-M-Left>", "<C-W>h")
-vim.keymap.set("", "<C-M-Down>", "<C-W>j")
-vim.keymap.set("", "<C-M-Up>", "<C-W>k")
-vim.keymap.set("", "<C-M-Right>", "<C-W>l")
+vim.keymap.set("", "<S-Left>", "<C-W>h")
+vim.keymap.set("", "<S-Down>", "<C-W>j")
+vim.keymap.set("", "<S-Up>", "<C-W>k")
+vim.keymap.set("", "<S-Right>", "<C-W>l")
+
+vim.keymap.set("", "<C-M-Left>", "zh")
+vim.keymap.set("", "<C-M-Down>", "<C-E>")
+vim.keymap.set("", "<C-M-Up>", "<C-Y>")
+vim.keymap.set("", "<C-M-Right>", "zl")
 
 vim.keymap.set("", "<C-S-M-Left>", ":vertical :resize -1<CR>")
 vim.keymap.set("", "<C-S-M-Down>", ":resize -1<CR>")
