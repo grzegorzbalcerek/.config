@@ -59,6 +59,9 @@ vim.keymap.set("", "<C-S-M-Down>", ":resize -1<CR>")
 vim.keymap.set("", "<C-S-M-Up>", ":resize +1<CR>")
 vim.keymap.set("", "<C-S-M-Right>", ":vertical :resize +1<CR>")
 
+vim.keymap.set("i", "<C-B>", "<C-o>0")
+vim.keymap.set("i", "<C-F>", "<C-o>$")
+
 vim.g.OgntPath = vim.env.HOME .. "/doc/rbs/ognt"
 vim.g.OgntBook = 43
 

@@ -60,3 +60,6 @@ map <C-S-M-Down> :resize -1<CR>
 map <C-S-M-Up> :resize +1<CR>
 map <C-S-M-Right> :vertical :resize +1<CR>
 
+imap <C-B> <C-o>0
+imap <C-F> <C-o>$
+
