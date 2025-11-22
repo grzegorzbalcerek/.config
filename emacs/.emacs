@@ -49,25 +49,29 @@
 (global-set-key [f1] 'save-buffer)
 (global-set-key (kbd "C-c r") 'toggle-truncate-lines)
 
-(global-set-key (kbd "<M-left>") 'previous-buffer)
-(global-set-key (kbd "<M-down>") 'buffer-menu)
-(global-set-key (kbd "<M-up>") (lambda()(interactive)(dired ".")))
-(global-set-key (kbd "<M-right>") 'next-buffer)
-
 (global-set-key (kbd "<S-left>") 'windmove-left)
 (global-set-key (kbd "<S-down>") 'windmove-down)
 (global-set-key (kbd "<S-up>") 'windmove-up)
 (global-set-key (kbd "<S-right>") 'windmove-right)
 
-(global-set-key (kbd "<C-M-left>") (lambda(n)(interactive "p")(scroll-right n)))
-(global-set-key (kbd "<C-M-down>") (lambda(n)(interactive "p")(scroll-up n)))
-(global-set-key (kbd "<C-M-up>") (lambda(n)(interactive "p")(scroll-down n)))
-(global-set-key (kbd "<C-M-right>") (lambda(n)(interactive "p")(scroll-left n)))
+(global-set-key (kbd "<M-left>") (lambda(n)(interactive "p")(scroll-right n)))
+(global-set-key (kbd "<M-down>") (lambda(n)(interactive "p")(scroll-up n)))
+(global-set-key (kbd "<M-up>") (lambda(n)(interactive "p")(scroll-down n)))
+(global-set-key (kbd "<M-right>") (lambda(n)(interactive "p")(scroll-left n)))
+
+(global-set-key (kbd "<C-M-left>") 'previous-buffer)
+(global-set-key (kbd "<C-M-down>") 'buffer-menu)
+(global-set-key (kbd "<C-M-up>") (lambda()(interactive)(dired ".")))
+(global-set-key (kbd "<C-M-right>") 'next-buffer)
 
 (global-set-key (kbd "<C-S-M-left>") 'shrink-window-horizontally)
 (global-set-key (kbd "<C-S-M-down>") 'shrink-window)
 (global-set-key (kbd "<C-S-M-up>") 'enlarge-window)
 (global-set-key (kbd "<C-S-M-right>") 'enlarge-window-horizontally)
+
+(set-register ?. '(file . "~/.emacs"))
+
+;(load-file "~/.config/emacs/time.el")
 
 (set-buffer "*scratch*")
 (insert "\n")

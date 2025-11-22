@@ -40,20 +40,20 @@ map <leader>h :set hlsearch!<CR>
 map <leader>w :write<CR>
 map <leader>r :set wrap!<CR>
 
-map <M-Left> :bprev<CR>
-map <M-Down> :ls<CR>
-map <M-Up> :Explore<CR>
-map <M-Right> :bnext<CR>
-
 map <S-Left> <C-W>h
 map <S-Down> <C-W>j
 map <S-Up> <C-W>k
 map <S-Right> <C-W>l
 
-map <C-M-Left> zl
-map <C-M-Down> <C-Y>
-map <C-M-Up> <C-E>
-map <C-M-Right> zh
+map <M-Left> zl
+map <M-Down> <C-Y>
+map <M-Up> <C-E>
+map <M-Right> zh
+
+map <C-M-Left> :bprev<CR>
+map <C-M-Down> :ls<CR>
+map <C-M-Up> :Explore<CR>
+map <C-M-Right> :bnext<CR>
 
 map <C-S-M-Left> :vertical :resize -1<CR>
 map <C-S-M-Down> :resize -1<CR>
