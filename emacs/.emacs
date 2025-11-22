@@ -71,7 +71,8 @@
 
 (set-register ?. '(file . "~/.emacs"))
 
-;(load-file "~/.config/emacs/time.el")
+(add-to-list 'load-path "~/.config/emacs")
+(require 'time)
 
 (set-buffer "*scratch*")
 (insert "\n")

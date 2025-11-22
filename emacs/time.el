@@ -1,3 +1,6 @@
+;;; -*- lexical-biding: t -*-
+
+(provide 'time)
 
 (defun time-initialize()
   (interactive)
