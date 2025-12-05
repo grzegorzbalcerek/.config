@@ -16,7 +16,7 @@ set ignorecase
 set incsearch
 set mouse=a
 set number
-set path=.,~/.config/**,~/lib,~/doc/**,~/zk/**,~/rep/rbs/**,,
+set path=.,~/.config/**,~/lib,~/doc/**,~/rep/zk/zkvault,~/rep/rbs/**,,
 set relativenumber
 set ruler
 
@@ -40,15 +40,15 @@ map <leader>h :set hlsearch!<CR>
 map <leader>w :write<CR>
 map <leader>r :set wrap!<CR>
 
-map <S-Left> <C-W>h
-map <S-Down> <C-W>j
-map <S-Up> <C-W>k
-map <S-Right> <C-W>l
+map <M-Left> <C-W>h
+map <M-Down> <C-W>j
+map <M-Up> <C-W>k
+map <M-Right> <C-W>l
 
-map <M-Left> zl
-map <M-Down> <C-Y>
-map <M-Up> <C-E>
-map <M-Right> zh
+map <S-Left> zl
+map <S-Down> <C-Y>
+map <S-Up> <C-E>
+map <S-Right> zh
 
 map <C-M-Left> :bprev<CR>
 map <C-M-Down> :ls<CR>

@@ -16,7 +16,7 @@ vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.mouse = "a"
 vim.opt.number = true
-vim.opt.path = { ".", vim.env.HOME .. "/.config/**", vim.env.HOME .. "/lib", vim.env.HOME .. "/doc/**", vim.env.HOME .. "/zk/**", vim.env.HOME .. "/rep/rbs/**", "" }
+vim.opt.path = { ".", vim.env.HOME .. "/.config/**", vim.env.HOME .. "/lib", vim.env.HOME .. "/doc/**", vim.env.HOME .. "/rep/zk/zkvault", vim.env.HOME .. "/rep/rbs/**", "" }
 vim.opt.relativenumber = true
 vim.opt.ruler = true
 vim.opt.shiftwidth = 4
@@ -39,15 +39,15 @@ vim.keymap.set("", "<leader>h", ":set hlsearch!<CR>")
 vim.keymap.set("", "<leader>w", ":write<CR>")
 vim.keymap.set("", "<leader>r", ":set wrap!<CR>")
 
-vim.keymap.set("", "<S-Left>", "<C-W>h")
-vim.keymap.set("", "<S-Down>", "<C-W>j")
-vim.keymap.set("", "<S-Up>", "<C-W>k")
-vim.keymap.set("", "<S-Right>", "<C-W>l")
+vim.keymap.set("", "<M-Left>", "<C-W>h")
+vim.keymap.set("", "<M-Down>", "<C-W>j")
+vim.keymap.set("", "<M-Up>", "<C-W>k")
+vim.keymap.set("", "<M-Right>", "<C-W>l")
 
-vim.keymap.set("", "<M-Left>", "zh")
-vim.keymap.set("", "<M-Down>", "<C-E>")
-vim.keymap.set("", "<M-Up>", "<C-Y>")
-vim.keymap.set("", "<M-Right>", "zl")
+vim.keymap.set("", "<S-Left>", "zh")
+vim.keymap.set("", "<S-Down>", "<C-E>")
+vim.keymap.set("", "<S-Up>", "<C-Y>")
+vim.keymap.set("", "<S-Right>", "zl")
 
 vim.keymap.set("", "<C-M-Left>", ":bprev<CR>")
 vim.keymap.set("", "<C-M-Down>", ":ls<CR>")
