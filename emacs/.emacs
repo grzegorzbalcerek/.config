@@ -49,15 +49,15 @@
 (global-set-key [f1] 'save-buffer)
 (global-set-key (kbd "C-c r") 'toggle-truncate-lines)
 
-(global-set-key (kbd "<S-left>") 'windmove-left)
-(global-set-key (kbd "<S-down>") 'windmove-down)
-(global-set-key (kbd "<S-up>") 'windmove-up)
-(global-set-key (kbd "<S-right>") 'windmove-right)
+(global-set-key (kbd "<M-left>") 'windmove-left)
+(global-set-key (kbd "<M-down>") 'windmove-down)
+(global-set-key (kbd "<M-up>") 'windmove-up)
+(global-set-key (kbd "<M-right>") 'windmove-right)
 
-(global-set-key (kbd "<M-left>") (lambda(n)(interactive "p")(scroll-right n)))
-(global-set-key (kbd "<M-down>") (lambda(n)(interactive "p")(scroll-up n)))
-(global-set-key (kbd "<M-up>") (lambda(n)(interactive "p")(scroll-down n)))
-(global-set-key (kbd "<M-right>") (lambda(n)(interactive "p")(scroll-left n)))
+(global-set-key (kbd "<S-left>") (lambda(n)(interactive "p")(scroll-right n)))
+(global-set-key (kbd "<S-down>") (lambda(n)(interactive "p")(scroll-up n)))
+(global-set-key (kbd "<S-up>") (lambda(n)(interactive "p")(scroll-down n)))
+(global-set-key (kbd "<S-right>") (lambda(n)(interactive "p")(scroll-left n)))
 
 (global-set-key (kbd "<C-M-left>") 'previous-buffer)
 (global-set-key (kbd "<C-M-down>") 'buffer-menu)
